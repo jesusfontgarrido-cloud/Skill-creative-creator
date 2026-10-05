@@ -10,7 +10,7 @@ Subcomandos:
   export-skill  vuelca las listas de referencias para la skill final
 
 Esquema de cada referencia (refs.json -> "refs"):
-  id, url, title, author, platform, thumb, group, tags[], note, license,
+  id, url, title, author, platform, thumb, group, tipologia, tags[], note, license,
   phase ("explore" | "search"), contrast (bool), picked (bool), score (1-10 | null)
 """
 import argparse
@@ -85,6 +85,8 @@ def cmd_validate(a):
             seen_url[n] = r.get("id")
         if not r.get("tags"):
             warns.append(f"{r.get('id')}: sin tags (el análisis de patrón los necesita)")
+        if r.get("phase") == "explore" and not r.get("tipologia"):
+            errors.append(f"{r.get('id')}: en explore hace falta 'tipologia' (la opción que el creativo elige)")
         if r.get("phase") not in ("explore", "search"):
             errors.append(f"{r.get('id')}: phase debe ser 'explore' o 'search'")
 
@@ -148,6 +150,7 @@ main{padding:16px;max-width:1400px;margin:auto}
 .meta{padding:10px 12px;display:flex;flex-direction:column;gap:6px;flex:1}
 .meta a{color:var(--fg);font-weight:600;text-decoration:none}
 .meta small{color:var(--mut)}
+.tip{font-size:16px}
 .tags{display:flex;flex-wrap:wrap;gap:4px}.tags i{font-style:normal;font-size:12px;border:1px solid var(--bd);border-radius:99px;padding:0 7px;color:var(--mut)}
 .scale{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
 .scale button{padding:5px 0;font-size:13px;border-radius:6px}
@@ -174,7 +177,9 @@ function thumb(r){
   return `<div class="thumb"><a href="${esc(r.url)}" target="_blank" rel="noopener" style="width:100%;height:100%"><img src="${esc(r.thumb)}" loading="lazy" referrerpolicy="no-referrer" alt="${esc(r.title)}" onerror="this.parentNode.innerHTML='${fb.replace(/'/g,"")}'"></a></div>`;
 }
 function info(r){
-  return `<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title||r.url)}</a><small>${esc(r.author||"")} · ${esc(r.platform)}</small><div class="tags">${(r.tags||[]).map(t=>`<i>${esc(t)}</i>`).join("")}</div>`;
+  const head=r.tipologia?`<b class="tip">${esc(r.tipologia)}</b><small>${esc(r.note||"")}</small><small>Ejemplo: <a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title||r.url)}</a> · ${esc(r.platform)}</small>`
+    :`<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title||r.url)}</a><small>${esc(r.author||"")} · ${esc(r.platform)}</small>`;
+  return head+`<div class="tags">${(r.tags||[]).map(t=>`<i>${esc(t)}</i>`).join("")}</div>`;
 }
 /* ---------- modo pick ---------- */
 function renderPick(){
@@ -249,7 +254,7 @@ def cmd_board(a):
         title = "Puntúa cada referencia del 1 al 10"
     if not refs:
         sys.exit("No hay referencias para este modo (¿phase correcta?).")
-    keep = ("id", "url", "title", "author", "platform", "thumb", "group", "tags")
+    keep = ("id", "url", "title", "author", "platform", "thumb", "group", "tags", "tipologia", "note")
     slim = [{k: r.get(k) for k in keep} for r in refs]
     slug = re.sub(r"\W+", "-", (data["profile"].get("foco") or "board").lower()).strip("-")[:40]
     payload = json.dumps({"mode": a.mode, "slug": slug, "refs": slim}, ensure_ascii=False).replace("</", "<\\/")
@@ -392,7 +397,7 @@ def cmd_export(a):
     write("referencias-evitar.md", "Referencias a evitar (1-5)",
           "Ordenadas de peor a menos mala. Son la vara de medir de lo que NO.",
           sorted([r for r in rated if r["score"] < LIKE_MIN], key=lambda r: r["score"]))
-    keep = ("id", "url", "title", "author", "platform", "group", "tags", "score", "user_note", "license")
+    keep = ("id", "url", "title", "author", "platform", "group", "tipologia", "tags", "score", "user_note", "license")
     save(out / "referencias.json", {"profile": data["profile"], "refs": [{k: r.get(k) for k in keep} for r in rated]})
     print(f"Exportado a {out}/ (referencias-gustan.md, referencias-evitar.md, referencias.json)")
 

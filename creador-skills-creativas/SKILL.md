@@ -78,8 +78,15 @@ Objetivo: mapear el territorio y que el creativo revele su gusto *eligiendo*, no
 2. Busca con la extensión (método en `plataformas.md`) **5 referencias por grupo = 50 en total**, `phase: "explore"`.
    Las 5 de cada grupo deben ser **estilos claramente distintos entre sí**; si no, elegir una no aporta información.
    Mezcla al menos 3 plataformas en el conjunto.
-3. Guarda cada una en `refs.json` con `id, url, title, author, platform, thumb, group, tags (4-8), license, phase`. Los tags los pones mirando la imagen.
-4. Valida y genera el tablero:
+3. **Cada referencia lleva una `tipologia`**: el nombre corto y llano del *tipo de solución* que ilustra dentro de su grupo. Es lo que el
+   creativo va a elegir, así que debe entenderse sin conocer la pieza. En el grupo «Hooks»: «Hook visual», «Hook de personaje»,
+   «Hook de acción continua», «Hook de concepto», «Hook de estilo y contraste»; en «Estructura»: «Retrato de una sola voz», «Arco de aprendizaje»,
+   «Coral»… Las 5 tipologías de un grupo son distintas entre sí, y la pieza real (`title`, `url`) es solo el *ejemplo*. Acompáñala de una
+   frase en lenguaje llano en `note` («Abre con una imagen que impacta sin explicar nada»), sin jerga ni nombres de técnicas que
+   haya que conocer. Si dudas entre una pieza y su tipología, pregúntate: ¿puede elegir esto alguien que no ha visto la pieza?
+   Ejemplos de tipologías por oficio en `oficios.md`.
+4. Guarda cada una en `refs.json` con `id, url, title, author, platform, thumb, group, tipologia, note, tags (4-8), license, phase`. Los tags los pones mirando la imagen.
+5. Valida y genera el tablero (`validate` rechaza referencias de explore sin tipología):
 
 ```bash
 python3 $SKILL/scripts/refs.py validate creative-workspace/<slug>/refs.json --stage explore
@@ -88,10 +95,14 @@ python3 $SKILL/scripts/refs.py board creative-workspace/<slug>/refs.json --mode 
 
 ## Fase 2 — Selección: 1 de cada 5
 
-Entrega `elegir.html` (ábrelo con la herramienta de archivos/preview de la sesión o dile la ruta; se abre en cualquier navegador). La persona
-elige **1 de cada 5** por grupo (o «Ninguna») y, si quiere, escribe una frase de por qué. Descarga `picks.json`.
+Se elige entre **tipologías**, no entre títulos de piezas. La persona elige **1 de cada 5** por grupo (o «Ninguna») y, si quiere, escribe una frase
+de por qué.
 
-Si no puede abrir HTML, presenta los grupos en el chat (imagen + enlace + letra A–E) y recoge las respuestas ahí.
+- **Con encuesta (lo preferido):** una pregunta por grupo, hasta 4 grupos por llamada. Cada opción = `label` con la tipología («Hook visual»),
+  `description` con la frase llana + el ejemplo («Ej.: Déguste, Vimeo»). Las encuestas admiten 4 opciones y el grupo tiene 5: pon 4 como
+  opciones y menciona la 5ª tipología al final de la pregunta para que la escriba en «Otro». La pregunta dice qué grupo es y para qué sirve
+  en una frase, no en un párrafo.
+- **Con tablero:** `elegir.html` muestra la tipología en grande, su explicación y la pieza como ejemplo enlazado; descarga `picks.json`.
 
 ```bash
 python3 $SKILL/scripts/refs.py apply creative-workspace/<slug>/refs.json picks.json

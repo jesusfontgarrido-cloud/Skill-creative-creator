@@ -9,6 +9,22 @@ Regla de oro de cada grupo: las 5 referencias deben ser **estilos distintos entr
 (p. ej. en «Tipografía»: una serif editorial, una grotesca suiza, un lettering a mano, una display experimental,
 una monoespaciada). Si las 5 se parecen, elegir 1 no enseña nada.
 
+## Tipologías: lo que se elige en la Fase 2
+
+En cada grupo, las 5 referencias representan 5 **tipologías** (tipos de solución) con nombre llano. El creativo elige la tipología; la pieza es
+el ejemplo que la ilustra. Ejemplos:
+
+| Grupo | Tipologías de ejemplo |
+|---|---|
+| Hooks / aperturas | Hook visual · Hook sonoro · Hook de personaje · Hook de concepto · Hook de acción continua · Hook de pregunta o promesa · Hook de contraste |
+| Estructura | Retrato de una sola voz · Arco de aprendizaje · Coral · Didáctica por capítulos · Viaje del héroe |
+| Color | Monocromo · Análoga cálida · Complementaria vibrante · Neón · Tierra desaturada |
+| Tipografía | Serif editorial · Grotesca suiza · Lettering a mano · Display experimental · Monoespaciada |
+| Montaje | A ritmo de música · Acelerado · Sin cortes · Didáctico paso a paso · Coral |
+
+Reglas: nombre de 2–5 palabras; sin jerga que el creativo no use; una sola idea por tipología; las 5 de un grupo no se solapan. Si dos tipologías
+suenan casi igual, fusiónalas y busca otra distinta.
+
 ## Sectores: el foco real de la skill
 
 El **foco es el sector** donde trabaja el creativo (gastronomía, hoteles, inmobiliaria, finanzas…). Las líneas «Focos típicos» de cada
