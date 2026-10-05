@@ -6,12 +6,15 @@ Subcomandos:
   validate    comprueba esquema, duplicados y mínimos (50 en explore, 200 en search)
   board       genera un tablero HTML autocontenido (modo pick o rate)
   apply       fusiona en refs.json el JSON que descarga el tablero
-  stats       analiza las puntuaciones y propone el patrón de gusto
+  stats       analiza las puntuaciones: criterio por dimensión y rasgos sueltos
   export-skill  vuelca las listas de referencias para la skill final
 
 Esquema de cada referencia (refs.json -> "refs"):
-  id, url, title, author, platform, thumb, group, tipologia, tags[], note, license,
+  id, url, title, author, platform, thumb, group (= dimensión), tipologia, tags[], note, license,
   phase ("explore" | "search"), contrast (bool), picked (bool), score (1-10 | null)
+
+En search, los tags de dimensión tienen la forma "dimensión:tipología" (p. ej. "luz:natural de ventana"),
+con los mismos nombres que los grupos y tipologías de explore; mayúsculas y tildes no importan.
 """
 import argparse
 import datetime
@@ -19,6 +22,7 @@ import html
 import json
 import re
 import sys
+import unicodedata
 from collections import Counter, defaultdict
 from pathlib import Path
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
@@ -33,6 +37,28 @@ def norm_url(u):
     q = [(k, v) for k, v in parse_qsl(p.query) if not TRACKING.match(k)]
     path = p.path.rstrip("/") or "/"
     return urlunsplit((p.scheme.lower(), p.netloc.lower().removeprefix("www."), path, urlencode(q), ""))
+
+
+def slug(s):
+    s = unicodedata.normalize("NFKD", str(s)).encode("ascii", "ignore").decode()
+    return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
+
+
+def split_tag(t):
+    """'Luz: Natural de ventana' -> ('luz', 'natural-de-ventana', 'Natural de ventana'); sin ':' -> None."""
+    if ":" not in t:
+        return None
+    d, v = t.split(":", 1)
+    return slug(d), slug(v), v.strip()
+
+
+def dimensions(refs):
+    """Dimensiones = grupos de explore, en orden de aparición."""
+    out = []
+    for r in refs:
+        if r.get("phase") == "explore" and r.get("group") and r["group"] not in out:
+            out.append(r["group"])
+    return out
 
 
 def load(path):
@@ -55,7 +81,8 @@ def cmd_init(a):
         sys.exit(f"{target} ya existe (usa --force para sobrescribir).")
     save(target, {
         "profile": {
-            "oficio": a.oficio, "foco": a.foco, "keyword": a.keyword or "",
+            "oficio": a.oficio, "foco": a.foco, "uso": a.uso or "", "canal": a.canal or "",
+            "keyword": a.keyword or "",
             "created": datetime.date.today().isoformat(),
         },
         "refs": [],
@@ -116,6 +143,12 @@ def cmd_validate(a):
             share = sum(1 for r in search if r.get("contrast")) / len(search)
             if share < 0.12:
                 warns.append(f"solo {share:.0%} de contraste; sin ejemplos fuera de gusto no habrá puntuaciones bajas")
+        dims = {slug(g) for g in dimensions(refs)}
+        if search and dims:
+            tagged = sum(1 for r in search if any((st := split_tag(t)) and st[0] in dims for t in r.get("tags") or []))
+            if tagged / len(search) < 0.8:
+                warns.append(f"solo {tagged} de {len(search)} referencias llevan tags 'dimensión:tipología' de las dimensiones "
+                             "de la Fase 1; sin ellos no hay criterio por dimensión")
         print("Plataformas:", dict(plats))
         print("Grupos:", dict(Counter(r["group"] for r in search)))
     for w in warns[:25]:
@@ -313,6 +346,57 @@ def cmd_stats(a):
     if share < 0.15:
         out.append("\n> AVISO: casi todo está por debajo de 6. La búsqueda no ha dado con su gusto; revisa semillas y palabras clave.")
 
+    # --- criterio por dimensión (lo que se convierte en normas de la skill final)
+    dims = dimensions(refs)
+    seeds = {slug(r["group"]): (slug(r.get("tipologia") or ""), r.get("tipologia"))
+             for r in refs if r.get("phase") == "explore" and r.get("picked")}
+    dim_scores = defaultdict(lambda: defaultdict(list))
+    labels = {(slug(r["group"]), slug(r["tipologia"])): r["tipologia"]
+              for r in refs if r.get("phase") == "explore" and r.get("tipologia")}
+    for r in rated:
+        for t in set(r.get("tags") or []):
+            st = split_tag(t)
+            if st:
+                dim_scores[st[0]][st[1]].append(r["score"])
+                labels.setdefault((st[0], st[1]), st[2])
+    if dims:
+        out.append("\n## Criterio por dimensión\n")
+        out.append(f"★ = tipología elegida en la Fase 2. Norma = mejor media con n≥{a.min_n}; evitar = media ≤{LIKE_MIN - 1}.")
+    for dim in dims:
+        ds = slug(dim)
+        rows = sorted(dim_scores.get(ds, {}).items(), key=lambda kv: -mean(kv[1]))
+        out.append(f"\n### {dim}\n")
+        if not rows:
+            out.append("_Ninguna referencia puntuada lleva tags de esta dimensión: por explorar._")
+            continue
+        seed_slug, seed_label = seeds.get(ds, (None, None))
+        out.append("| tipología | n | media | % gustan |")
+        out.append("|---|---|---|---|")
+        for vs, xs in rows:
+            star = " ★" if vs == seed_slug else ""
+            out.append(f"| {labels[(ds, vs)]}{star} | {len(xs)} | {mean(xs):.1f} | {sum(1 for x in xs if x >= LIKE_MIN) / len(xs):.0%} |")
+        solid = [(vs, xs) for vs, xs in rows if len(xs) >= a.min_n]
+        best = solid[0] if solid else None
+        avoid = [labels[(ds, vs)] for vs, xs in solid if mean(xs) <= LIKE_MIN - 1]
+        line = []
+        if best:
+            line.append(f"Norma candidata: **{labels[(ds, best[0])]}** ({mean(best[1]):.1f}, n={len(best[1])}).")
+        else:
+            line.append(f"Ninguna tipología llega a n={a.min_n}: por explorar.")
+        if avoid:
+            line.append("Evitar: " + ", ".join(avoid) + ".")
+        if seed_label:
+            xs = dim_scores.get(ds, {}).get(seed_slug)
+            if not xs:
+                line.append(f"Elegida en Fase 2 ({seed_label}): sin referencias puntuadas con esa tipología; busca más.")
+            elif best and best[0] != seed_slug and mean(best[1]) - mean(xs) > 0.5:
+                line.append(f"Elegida en Fase 2 ({seed_label}, {mean(xs):.1f}) **no se confirma**: puntúa mejor otra. Pregúntale.")
+            else:
+                line.append(f"Elegida en Fase 2 ({seed_label}, {mean(xs):.1f}): se confirma.")
+        out.append("\n" + " ".join(line))
+    if dims:
+        out.append("\n---\n\n# Rasgos sueltos (todas las etiquetas)")
+
     tag_scores = defaultdict(list)
     for r in rated:
         for t in set(r.get("tags") or []):
@@ -407,7 +491,8 @@ def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     s = p.add_subparsers(dest="cmd", required=True)
     x = s.add_parser("init"); x.add_argument("--dir", required=True); x.add_argument("--oficio", required=True)
-    x.add_argument("--foco", required=True); x.add_argument("--keyword"); x.add_argument("--force", action="store_true"); x.set_defaults(f=cmd_init)
+    x.add_argument("--foco", required=True); x.add_argument("--keyword"); x.add_argument("--uso"); x.add_argument("--canal")
+    x.add_argument("--force", action="store_true"); x.set_defaults(f=cmd_init)
     x = s.add_parser("validate"); x.add_argument("file"); x.add_argument("--stage", choices=["any", "explore", "search"], default="any")
     x.add_argument("--min", type=int, default=200); x.set_defaults(f=cmd_validate)
     x = s.add_parser("board"); x.add_argument("file"); x.add_argument("--mode", choices=["pick", "rate"], required=True)

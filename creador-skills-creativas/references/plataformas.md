@@ -53,7 +53,7 @@ Las URLs y los límites de cada sitio cambian: **comprueba** que la búsqueda fu
 | TikTok Creative Center / Meta Ad Library | tendencias y anuncios | herramientas públicas | Para content creator y paid. |
 
 Reparto orientativo de la Fase 3 (≥200): **mínimo 3 plataformas**, ninguna por encima del 50 %, y favorece las que mejor
-encajen con el oficio (ver el final de cada oficio en `oficios.md`).
+encajen con el uso (sección «Dónde buscar las 200» de cada uso en `usos.md`).
 
 ## Qué guardar y qué no
 

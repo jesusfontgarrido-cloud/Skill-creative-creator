@@ -6,18 +6,21 @@ con ese gusto real genera una skill propia.
 
 ## Flujo
 
+La skill final es **criterio + normas** para un uso concreto (guiones, imágenes, motion, branding, Claude Design, Figma, redes…).
+Todo encadena: **uso de la skill → 10 dimensiones → normas de la skill final.**
+
 | Fase | Qué pasa | Resultado |
 |---|---|---|
-| 0 | Encuestas: oficio, foco = sector (gastronomía, inmobiliaria, finanzas…) y palabra de estilo generada para ese sector | Encuadre + espacio de trabajo |
-| 1 | Busca 50 referencias en 10 grupos de 5 (según oficio) | Tablero «elige 1 de cada 5» |
-| 2 | El creativo elige 1 por grupo | 10 semillas de gusto |
-| 3 | Búsqueda exhaustiva guiada por las semillas | ≥200 referencias (con un 15–25 % de contraste) |
-| 4 | El creativo puntúa del 1 al 10 (6–10 le gusta, 1–5 evitar) | Dataset puntuado |
-| 5 | Análisis de patrón: qué le define, qué evita, tensiones | Patrón validado con la persona |
-| 6 | Genera la skill personalizada | Carpeta de skill lista para instalar |
+| 0 | 3 encuestas: tipo de trabajo → oficio, sector y canal → uso y estilo | Encuadre y las 10 dimensiones de criterio |
+| 1 | Por cada dimensión, 5 tipologías con una pieza real de ejemplo | 50 referencias |
+| 2 | El creativo elige 1 de cada 5 (encuestas) | Criterio inicial |
+| 3 | **La estrella:** búsqueda de 200 o más en plataformas, etiquetada por dimensión | ≥200 referencias (15–25 % de contraste) |
+| 4 | El creativo puntúa del 1 al 10 (6–10 le gusta, 1–5 evitar) | Datos puntuados |
+| 5 | Análisis por dimensión: norma, evitar, margen; confirma o corrige la Fase 2 | Criterio validado con la persona |
+| 6 | Genera la skill: criterio + normas del canal + normas de salida + checklist | Skill lista para instalar |
 
 Oficios: diseñador gráfico, diseñador web, director creativo, filmmaker, fotógrafo, cinematográfico y content creator.
-Recomendación: **una skill por foco** y esfuerzo alto o superior.
+Recomendación: **una skill por uso y sector** y esfuerzo alto o superior.
 
 ## Instalación
 
@@ -30,7 +33,8 @@ extensión de Chrome de Claude. Necesita Python 3 para los scripts (sin dependen
 creador-skills-creativas/
 ├── SKILL.md                         # el flujo completo
 ├── references/
-│   ├── oficios.md                   # focos, grupos y tags por oficio
+│   ├── preguntas.md                 # las 3 encuestas de la Fase 0
+│   ├── usos.md                      # dimensiones, tipologías, plataformas y normas por uso
 │   ├── plataformas.md               # extensión de Chrome, plataformas, qué guardar
 │   └── plantilla-skill-final.md     # estructura de la skill generada
 └── scripts/refs.py                  # base de datos, tableros HTML, validación y análisis
