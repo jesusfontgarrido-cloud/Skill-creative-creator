@@ -89,6 +89,9 @@ en tus imágenes?». Cada opción: `label` = tipología, `description` = su fras
 python3 $SKILL/scripts/refs.py apply creative-workspace/<slug>/refs.json picks.json
 ```
 
+Si escribe su propia tipología en «Otro» («presentamos el problema»), es información valiosa: no la fuerces a una de las 5. Regístrala en
+`refs.json` → `profile.custom_picks` (`{"<dimensión>": "<tipología>"}`) y búscala en la Fase 3 como una tipología más.
+
 Las 10 elegidas son el **criterio inicial** (una tipología por dimensión). Resúmelo en 3–5 líneas antes de la búsqueda grande: si el
 diagnóstico falla, falla todo lo demás.
 

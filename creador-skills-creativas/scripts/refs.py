@@ -350,9 +350,14 @@ def cmd_stats(a):
     dims = dimensions(refs)
     seeds = {slug(r["group"]): (slug(r.get("tipologia") or ""), r.get("tipologia"))
              for r in refs if r.get("phase") == "explore" and r.get("picked")}
+    # tipologías que el creativo escribió en «Otro» en la Fase 2: {dimensión: tipología}
+    for g, t in (data["profile"].get("custom_picks") or {}).items():
+        seeds[slug(g)] = (slug(t), t)
     dim_scores = defaultdict(lambda: defaultdict(list))
     labels = {(slug(r["group"]), slug(r["tipologia"])): r["tipologia"]
               for r in refs if r.get("phase") == "explore" and r.get("tipologia")}
+    for g, t in (data["profile"].get("custom_picks") or {}).items():
+        labels.setdefault((slug(g), slug(t)), t)
     for r in rated:
         for t in set(r.get("tags") or []):
             st = split_tag(t)
