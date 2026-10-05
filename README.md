@@ -8,7 +8,7 @@ con ese gusto real genera una skill propia.
 
 | Fase | Qué pasa | Resultado |
 |---|---|---|
-| 0 | Pregunta oficio, foco (y, opcional, una palabra/estilo) | Encuadre + espacio de trabajo |
+| 0 | Encuestas: oficio, foco = sector (gastronomía, inmobiliaria, finanzas…) y palabra de estilo generada para ese sector | Encuadre + espacio de trabajo |
 | 1 | Busca 50 referencias en 10 grupos de 5 (según oficio) | Tablero «elige 1 de cada 5» |
 | 2 | El creativo elige 1 por grupo | 10 semillas de gusto |
 | 3 | Búsqueda exhaustiva guiada por las semillas | ≥200 referencias (con un 15–25 % de contraste) |

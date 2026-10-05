@@ -31,8 +31,8 @@ Ruta de esta skill: la carpeta que contiene este archivo; en los comandos se esc
 2. **Las puntuaciones bajas son tan valiosas como las altas.** Una búsqueda guiada por lo que ya le gusta devuelve
    casi todo «me gusta» y el patrón de «evitar» queda vacío. Por eso en la Fase 3 se incluye a propósito un 15–25 % de
    contraste (cercano pero distinto, o un estilo vecino que suele gustar menos).
-3. **Un foco por skill.** Una skill que lo abarca todo acaba siendo genérica. Si el foco es amplio («todo el diseño gráfico»),
-   propón partirlo y empezar por uno; el proceso se puede repetir por foco.
+3. **Un foco (sector) por skill.** Una skill que lo abarca todo acaba siendo genérica. Si el foco es amplio («todos los sectores»),
+   propón partirlo y empezar por uno; el proceso se puede repetir por sector.
 4. **Estado en disco.** Todo vive en `refs.json`; así la sesión se puede cortar y retomar sin perder nada.
 5. **Referencia ≠ material reutilizable.** Se guardan enlaces, autor y notas; no se descargan ni se rehostean imágenes (ver `plataformas.md`).
 6. **Habla en el idioma y con el nivel de la persona.** Evita jerga técnica (JSON, schema…) salvo que ella la use; el tablero HTML
@@ -48,11 +48,21 @@ Pregunta, en este orden y sin bombardear:
 
 1. **Oficio** (ofrece la lista): Diseñador gráfico · Diseñador web · Director creativo · Filmmaker · Fotógrafo · Cinematográfico · Content Creator.
    (Si hay herramienta de pregunta con opciones, úsala en dos tandas; si no, lista numerada.)
-2. **Foco** dentro del oficio. Lee la sección del oficio en `references/oficios.md` y ofrece 4–6 focos típicos más «otro».
-3. **Palabra o estilo concreto (opcional)**: «diseño gráfico gastronómico», «hoteles de lujo», «neo-noir», «SaaS B2B»… Explica que cuanto más
-   concreto, más afinada sale la skill, pero que puede dejarlo vacío y se exploran varias direcciones.
+2. **Foco = sector o nicho en el que trabaja** (gastronomía, hoteles y turismo, inmobiliaria, finanzas/fintech, moda y belleza, salud y
+   bienestar, tecnología/SaaS, deporte, automoción, música, educación, institucional/ONG, lujo, retail…). El sector es lo que más cambia
+   qué es «una buena referencia»: un filmmaker de gastronomía y uno de finanzas miran cosas distintas. Ofrece los 4 sectores más
+   probables (la herramienta de encuesta admite 4 opciones; el resto, en «Otro») y respeta el que escriba. El formato o entregable
+   (spot, videoclip, identidad, landing…) es secundario: si hace falta, pregúntalo después como segunda pregunta; no lo uses como foco.
+3. **Palabra o estilo concreto (opcional) — generada para ese sector y oficio.** No uses una lista fija: construye 4 opciones a medida
+   con la combinación oficio × sector (tono, estética, subnicho, referencia de época o de mercado). Ejemplo para Filmmaker × gastronomía:
+   «cocina real y cercana», «alta cocina / lujo», «street food urbano», «producto sensorial». Para Filmmaker × finanzas serían otras
+   («institucional sobrio», «fintech joven», «storytelling humano», «datos y explicación»). Guía para generarlas en `references/oficios.md`
+   (sección «Sectores»). Incluye siempre «Sin palabra concreta» como vía de escape. Cuanto más concreta la palabra, más afinada sale la skill.
 4. **Navegador:** comprueba que hay extensión de Chrome conectada (ver `plataformas.md`) y si tiene sesión en Pinterest/Behance.
 5. **Nombre** con el que firmar la skill (para el `name` final) e idioma.
+
+**Cómo preguntar:** con encuestas de opciones (herramienta de pregunta con opciones), no pidiendo que escriba la respuesta en el chat. Las
+preguntas dependientes van en llamadas separadas (sector → luego palabras de estilo generadas para ese sector).
 
 Confirma el encuadre en 2 líneas y crea el espacio de trabajo:
 

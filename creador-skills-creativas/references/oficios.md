@@ -9,13 +9,40 @@ Regla de oro de cada grupo: las 5 referencias deben ser **estilos distintos entr
 (p. ej. en «Tipografía»: una serif editorial, una grotesca suiza, un lettering a mano, una display experimental,
 una monoespaciada). Si las 5 se parecen, elegir 1 no enseña nada.
 
+## Sectores: el foco real de la skill
+
+El **foco es el sector** donde trabaja el creativo (gastronomía, hoteles, inmobiliaria, finanzas…). Las líneas «Focos típicos» de cada
+oficio más abajo son en realidad **formatos/entregables**: sirven para repartir grupos, no para preguntar el foco.
+
+Sectores habituales para ofrecer en la encuesta: gastronomía · hoteles y turismo · inmobiliaria y arquitectura · finanzas/fintech ·
+moda y belleza · salud y bienestar · tecnología/SaaS · deporte · automoción · música y entretenimiento · educación · institucional/ONG · lujo · retail y e-commerce.
+
+**Cómo generar las 4 palabras de estilo (oficio × sector):** una por cada eje, adaptada al sector.
+1. *Registro/tono* del sector (cercano ↔ premium, sobrio ↔ desenfadado).
+2. *Subnicho* dentro del sector (en gastronomía: alta cocina, street food, producto, bebidas; en inmobiliaria: lujo, promoción nueva, alquiler, comercial).
+3. *Estética dominante* en ese sector y oficio (qué se lleva y qué es cliché).
+4. *Apuesta distinta* al cliché del sector (la que rompe lo esperable).
+
+| Oficio × sector | Opciones de estilo de ejemplo |
+|---|---|
+| Filmmaker × gastronomía | cocina real y cercana · alta cocina / lujo · street food urbano · producto sensorial |
+| Filmmaker × finanzas | institucional sobrio · fintech joven · storytelling humano · datos y explicación |
+| Filmmaker × inmobiliaria | lujo y estilo de vida · promoción nueva · tour inmersivo · barrio y comunidad |
+| Fotógrafo × hoteles | lujo silencioso · boutique con carácter · naturaleza y escapada · gente y servicio |
+| Diseñador gráfico × gastronomía | artesanal y cálido · minimal contemporáneo · retro / vintage · irreverente |
+| Diseñador web × finanzas | confianza y sobriedad · producto-first fintech · editorial / educativo · bold y dark |
+| Cinematográfico × música | neón nocturno · naturalista · onírico · granulado analógico |
+
+Son ejemplos para calibrar el nivel de concreción, no una lista a copiar: genera las opciones para el sector que haya elegido la persona.
+Si el sector no encaja con ningún ejemplo, inventa las 4 con los mismos ejes.
+
 Índice: [Diseñador gráfico](#diseñador-gráfico) · [Diseñador web](#diseñador-web) · [Director creativo](#director-creativo) ·
 [Filmmaker](#filmmaker) · [Fotógrafo](#fotógrafo) · [Cinematográfico](#cinematográfico) · [Content Creator](#content-creator)
 
 ---
 
 ## Diseñador gráfico
-**Focos típicos:** identidad de marca · packaging · cartelería/póster · editorial · tipografía/lettering · ilustración · gastronomía/hoteles/moda/tech (sector)
+**Formatos típicos (el foco real es el sector, ver arriba):** identidad de marca · packaging · cartelería/póster · editorial · tipografía/lettering · ilustración · gastronomía/hoteles/moda/tech (sector)
 
 **Grupos (10):**
 1. Tipografía y lettering
@@ -38,7 +65,7 @@ tono (sobrio/lúdico/lujo/irreverente) · técnica (vector/foto/collage/3D/mano)
 ---
 
 ## Diseñador web
-**Focos típicos:** landing de conversión · portfolio · e-commerce · SaaS/dashboard · web editorial · web experimental/WebGL · sector (hotel, restaurante, estudio…)
+**Formatos típicos (el foco real es el sector, ver arriba):** landing de conversión · portfolio · e-commerce · SaaS/dashboard · web editorial · web experimental/WebGL · sector (hotel, restaurante, estudio…)
 
 **Grupos (10):**
 1. Hero / primera pantalla
@@ -60,7 +87,7 @@ tema (claro/oscuro/mixto) · estilo (brutalista/glass/editorial/minimal/maximal)
 ---
 
 ## Director creativo
-**Focos típicos:** campañas de marca · identidad y territorio de marca · spots/vídeo publicitario · OOH · activaciones/experiencias · social-first · sector
+**Formatos típicos (el foco real es el sector, ver arriba):** campañas de marca · identidad y territorio de marca · spots/vídeo publicitario · OOH · activaciones/experiencias · social-first · sector
 
 **Grupos (10):**
 1. Big ideas / conceptos de campaña
@@ -85,7 +112,7 @@ nivel de riesgo · canal · economía de medios (idea simple vs. despliegue) · 
 Narrativa y dirección (qué se cuenta y cómo). El «look» fino de cámara y luz se trata en **Cinematográfico**; aquí se
 mira la historia, el ritmo y la puesta en escena.
 
-**Focos típicos:** cortometraje de ficción · documental · videoclip · branded content/spot · boda/eventos · vídeo corporativo
+**Formatos típicos (el foco real es el sector, ver arriba):** cortometraje de ficción · documental · videoclip · branded content/spot · boda/eventos · vídeo corporativo
 
 **Grupos (10):**
 1. Aperturas y hooks (primeros 30 s)
@@ -107,7 +134,7 @@ realismo vs. estilización · presupuesto percibido (bajo/medio/alto).
 ---
 
 ## Fotógrafo
-**Focos típicos:** retrato · moda/editorial · gastronomía · producto · bodas · arquitectura/interiores/hotel · calle/documental · paisaje
+**Formatos típicos (el foco real es el sector, ver arriba):** retrato · moda/editorial · gastronomía · producto · bodas · arquitectura/interiores/hotel · calle/documental · paisaje
 
 **Grupos (10):**
 1. Luz (dirección, calidad, hora)
@@ -131,7 +158,7 @@ estilo (documental/editorial/clínico/nostálgico) · saturación · grano · fo
 ## Cinematográfico
 Dirección de fotografía / look cinematográfico (DoP, color, óptica).
 
-**Focos típicos:** look de ficción (neo-noir, naturalista, onírico…) · publicidad cinematográfica · videoclip · documental con look de cine · época concreta
+**Formatos típicos (el foco real es el sector, ver arriba):** look de ficción (neo-noir, naturalista, onírico…) · publicidad cinematográfica · videoclip · documental con look de cine · época concreta
 
 **Grupos (10):**
 1. Iluminación (esquemas, motivación, contraste)
@@ -153,7 +180,7 @@ movimiento (estático/handheld/rígido) · textura · hora/ambiente (noche exter
 ---
 
 ## Content Creator
-**Focos típicos:** YouTube · Reels/TikTok/Shorts · carruseles · newsletter/LinkedIn · podcast en vídeo · UGC/marca personal · nicho (gastro, viajes, finanzas, fitness…)
+**Formatos típicos (el foco real es el sector, ver arriba):** YouTube · Reels/TikTok/Shorts · carruseles · newsletter/LinkedIn · podcast en vídeo · UGC/marca personal · nicho (gastro, viajes, finanzas, fitness…)
 
 **Grupos (10):**
 1. Hooks (primeros 3 s / primera línea)
