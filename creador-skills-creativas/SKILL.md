@@ -73,6 +73,10 @@ python3 $SKILL/scripts/refs.py init --dir creative-workspace/<slug> --oficio "<o
    cambia la tipología. No la deformes para que encaje con lo encontrado: así salen opciones sin sentido.
 4. Guarda cada una (`phase: "explore"`, `group` = dimensión) con `id, url, title, author, platform, thumb, group, tipologia, note,
    tags, license`. Mezcla al menos 3 plataformas.
+   - **Usos visuales** (Imagen, Motion, Identidad, Maquetación, Redes): `thumb` es obligatorio. Es la URL de la imagen (`og:image` o el
+     `src` de la imagen del pin o proyecto). Sin ella, el creativo no puede elegir viendo.
+   - **Uso Texto** (guiones, copy, conceptos): pon en `note` la frase clave de la pieza (el arranque o el claim), para que elija leyendo
+     el texto y no solo el título.
 
 ```bash
 python3 $SKILL/scripts/refs.py validate creative-workspace/<slug>/refs.json --stage explore
@@ -81,9 +85,17 @@ python3 $SKILL/scripts/refs.py board creative-workspace/<slug>/refs.json --mode 
 
 ## Fase 2 — Elige 1 de cada 5
 
-Encuestas, 4 dimensiones por llamada (4 + 4 + 2). Cada pregunta, en clave de su trabajo y en una línea: «3/10 · LUZ: ¿qué luz quieres
-en tus imágenes?». Cada opción: `label` = tipología, `description` = su frase + «Ej.: <pieza> (<plataforma>)». Las encuestas admiten
-4 opciones: la 5ª tipología se nombra al final de la pregunta para escribirla en «Otro». Alternativa visual: `elegir.html` → `picks.json`.
+**En usos visuales se elige viendo las imágenes.** Un estilo visual no se puede elegir por su nombre.
+1. Entrega `elegir.html`: muestra por dimensión las 5 imágenes grandes, cada una con su letra (A–E), su tipología y el enlace a la pieza.
+   Envíalo como archivo de la sesión para que lo abra, o ábrelo en su Chrome con la extensión.
+2. Recoge la elección con encuestas, con los mismos nombres y letras («A · Serif editorial»). Así mira en el tablero y contesta en la
+   encuesta. Si prefiere, puede elegir en el propio tablero y descargar `picks.json`.
+
+**En el uso Texto** basta la encuesta, porque se elige leyendo.
+
+Formato de las encuestas: 4 dimensiones por llamada (4 + 4 + 2). Cada pregunta va en clave de su trabajo y en una línea: «3/10 · LUZ:
+¿qué luz quieres en tus imágenes?». Cada opción: `label` = letra + tipología, `description` = su frase + «Ej.: <pieza> (<plataforma>)».
+Las encuestas admiten 4 opciones, así que la 5ª tipología se nombra al final de la pregunta para escribirla en «Otro».
 
 ```bash
 python3 $SKILL/scripts/refs.py apply creative-workspace/<slug>/refs.json picks.json

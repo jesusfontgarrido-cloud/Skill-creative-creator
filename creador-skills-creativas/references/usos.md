@@ -19,7 +19,9 @@ Contenido: [Cómo usar este archivo](#cómo-usar-este-archivo) · [Texto](#texto
    tipología. No la deformes para que encaje con lo que encontraste: así salen opciones sin sentido.
 5. Una tipología se nombra en 2–5 palabras llanas, más una frase («Abre con una escena que ya está pasando»). Debe poder elegirse
    sin haber visto la pieza. Las 5 de una dimensión no se solapan. Una puede ser el cliché del sector: también es información.
-6. **Nunca uses como dimensión lo que dicta el canal** (ritmo de cortes, duración, formato, longitud del hook, tamaño de los textos).
+6. **Usos visuales** (Imagen, Motion, Identidad, Maquetación, Redes): cada tipología se enseña con su **imagen** (`thumb`) y se
+   elige viéndola en `elegir.html`. **Texto** se elige leyendo: pon la frase clave de la pieza en `note`.
+7. **Nunca uses como dimensión lo que dicta el canal** (ritmo de cortes, duración, formato, longitud del hook, tamaño de los textos).
    Eso va a «Normas del canal».
 
 ---

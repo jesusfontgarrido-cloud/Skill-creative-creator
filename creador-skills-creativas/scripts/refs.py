@@ -130,6 +130,10 @@ def cmd_validate(a):
                 errors.append(f"grupo '{g}' tiene {n} referencias (deben ser 5)")
         if len(per) != 10:
             warns.append(f"hay {len(per)} grupos (lo previsto son 10 grupos x 5)")
+        missing = sum(1 for r in explore if not r.get("thumb"))
+        if missing:
+            warns.append(f"{missing} de {len(explore)} referencias sin miniatura ('thumb'): en usos visuales es obligatoria, "
+                         "porque el creativo elige viendo la imagen (en el uso Texto se puede omitir)")
     elif a.stage == "search":
         if len(search) < a.min:
             errors.append(f"search tiene {len(search)} referencias, el mínimo es {a.min}")
@@ -184,6 +188,7 @@ main{padding:16px;max-width:1400px;margin:auto}
 .meta a{color:var(--fg);font-weight:600;text-decoration:none}
 .meta small{color:var(--mut)}
 .tip{font-size:16px}
+.pick .thumb{aspect-ratio:4/5}.pick .thumb img{object-fit:contain}.pick .tags{display:none}
 .tags{display:flex;flex-wrap:wrap;gap:4px}.tags i{font-style:normal;font-size:12px;border:1px solid var(--bd);border-radius:99px;padding:0 7px;color:var(--mut)}
 .scale{display:grid;grid-template-columns:repeat(10,1fr);gap:3px}
 .scale button{padding:5px 0;font-size:13px;border-radius:6px}
@@ -200,6 +205,7 @@ section.grp{margin-bottom:28px}section.grp h2{font-size:17px;margin:0 0 4px}
 <script>
 const DATA=__DATA__;
 const MODE=DATA.mode, KEY="board-"+MODE+"-"+DATA.slug;
+document.body.classList.add(MODE);
 let st={}; try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
 st.picks=st.picks||{}; st.reasons=st.reasons||{}; st.ratings=st.ratings||{};
 const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
@@ -209,19 +215,19 @@ function thumb(r){
   if(!r.thumb) return `<div class="thumb"><a href="${esc(r.url)}" target="_blank" rel="noopener">${fb}</a></div>`;
   return `<div class="thumb"><a href="${esc(r.url)}" target="_blank" rel="noopener" style="width:100%;height:100%"><img src="${esc(r.thumb)}" loading="lazy" referrerpolicy="no-referrer" alt="${esc(r.title)}" onerror="this.parentNode.innerHTML='${fb.replace(/'/g,"")}'"></a></div>`;
 }
-function info(r){
-  const head=r.tipologia?`<b class="tip">${esc(r.tipologia)}</b><small>${esc(r.note||"")}</small><small>Ejemplo: <a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title||r.url)}</a> · ${esc(r.platform)}</small>`
+function info(r,letter){
+  const head=r.tipologia?`<b class="tip">${letter?esc(letter)+" · ":""}${esc(r.tipologia)}</b><small>${esc(r.note||"")}</small><small>Ejemplo: <a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title||r.url)}</a> · ${esc(r.platform)}</small>`
     :`<a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.title||r.url)}</a><small>${esc(r.author||"")} · ${esc(r.platform)}</small>`;
   return head+`<div class="tags">${(r.tags||[]).map(t=>`<i>${esc(t)}</i>`).join("")}</div>`;
 }
 /* ---------- modo pick ---------- */
 function renderPick(){
-  document.getElementById("legend").textContent="De cada grupo de 5, elige la 1 que mejor represente lo que buscas. Si ninguna te convence, pulsa «Ninguna». Opcional: una frase con el porqué.";
+  document.getElementById("legend").textContent="Mira las 5 imágenes de cada dimensión y elige la que mejor representa lo que buscas (A–E). Puedes elegir aquí o contestar la encuesta con la misma letra. Si ninguna te convence, «Ninguna». Opcional: una frase con el porqué.";
   const groups=[...new Set(DATA.refs.map(r=>r.group))];
   document.getElementById("main").innerHTML=groups.map(g=>{
     const items=DATA.refs.filter(r=>r.group===g);
-    return `<section class="grp"><h2>${esc(g)}</h2><p class="hint">Elige 1 de ${items.length}</p><div class="grid">${items.map(r=>
-      `<div class="card ${st.picks[g]===r.id?"sel":""}" data-g="${esc(g)}" data-id="${esc(r.id)}">${thumb(r)}<div class="meta">${info(r)}<button data-pick="${esc(r.id)}" data-g="${esc(g)}">${st.picks[g]===r.id?"✓ Elegida":"Elegir esta"}</button></div></div>`).join("")}</div>
+    return `<section class="grp"><h2>${esc(g)}</h2><p class="hint">Elige 1 de ${items.length}</p><div class="grid">${items.map((r,i)=>
+      `<div class="card ${st.picks[g]===r.id?"sel":""}" data-g="${esc(g)}" data-id="${esc(r.id)}">${thumb(r)}<div class="meta">${info(r,"ABCDEFGH"[i])}<button data-pick="${esc(r.id)}" data-g="${esc(g)}">${st.picks[g]===r.id?"✓ Elegida":"Elegir esta"}</button></div></div>`).join("")}</div>
       <p><button data-none="${esc(g)}">Ninguna</button> <input class="note" style="max-width:520px" data-reason="${esc(g)}" placeholder="¿Por qué? (opcional)" value="${esc(st.reasons[g]||"")}"></p></section>`}).join("");
   prog();
 }
