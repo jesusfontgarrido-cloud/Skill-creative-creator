@@ -35,7 +35,11 @@ Ruta de esta skill: la carpeta que contiene este archivo; en los comandos se esc
    propón partirlo y empezar por uno; el proceso se puede repetir por sector.
 4. **Estado en disco.** Todo vive en `refs.json`; así la sesión se puede cortar y retomar sin perder nada.
 5. **Referencia ≠ material reutilizable.** Se guardan enlaces, autor y notas; no se descargan ni se rehostean imágenes (ver `plataformas.md`).
-6. **Habla en el idioma y con el nivel de la persona.** Evita jerga técnica (JSON, schema…) salvo que ella la use; el tablero HTML
+6. **No preguntes lo que ya dictan las normas del canal.** Ritmo de cortes, duración, formato vertical/horizontal, longitud del hook o tamaño
+   de rótulos cambian según la función del vídeo (paid, orgánico, branded, documental…) y tienen reglas de plataforma; preguntar «¿qué ritmo
+   prefieres?» no mide gusto, mide el canal. En su lugar, pregunta **la función del vídeo** y trátala como contexto que condiciona la
+   búsqueda (en Fase 3 busca dentro de esa función). Los grupos de la Fase 1 deben ser decisiones de gusto o de criterio, no de norma.
+7. **Habla en el idioma y con el nivel de la persona.** Evita jerga técnica (JSON, schema…) salvo que ella la use; el tablero HTML
    y los mensajes bastan.
 
 ## Antes de empezar: aviso de esfuerzo

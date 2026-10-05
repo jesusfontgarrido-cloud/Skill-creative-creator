@@ -20,7 +20,9 @@ el ejemplo que la ilustra. Ejemplos:
 | Estructura | Retrato de una sola voz · Arco de aprendizaje · Coral · Didáctica por capítulos · Viaje del héroe |
 | Color | Monocromo · Análoga cálida · Complementaria vibrante · Neón · Tierra desaturada |
 | Tipografía | Serif editorial · Grotesca suiza · Lettering a mano · Display experimental · Monoespaciada |
-| Montaje | A ritmo de música · Acelerado · Sin cortes · Didáctico paso a paso · Coral |
+| Función del vídeo | Anuncio de captación (paid) · Contenido orgánico de redes · Película de marca · Documental o pieza larga · Serie educativa |
+
+**No uses como grupo lo que dictan las normas del canal** (ritmo de cortes, duración, formato, longitud del hook): usa la *función* del vídeo.
 
 Reglas: nombre de 2–5 palabras; sin jerga que el creativo no use; una sola idea por tipología; las 5 de un grupo no se solapan. Si dos tipologías
 suenan casi igual, fusiónalas y busca otra distinta.
@@ -135,7 +137,7 @@ mira la historia, el ritmo y la puesta en escena.
 2. Estructura narrativa y arcos
 3. Puesta en escena y blocking
 4. Encuadre y composición (storytelling visual)
-5. Montaje y ritmo (cortes, transiciones)
+5. Función del vídeo (captación paid · orgánico de redes · película de marca · documental/pieza larga · serie educativa)
 6. Dirección de actores / sujetos reales
 7. Sonido, música y silencio
 8. Títulos, créditos y gráficos en pantalla
@@ -203,7 +205,7 @@ movimiento (estático/handheld/rígido) · textura · hora/ambiente (noche exter
 2. Miniaturas y portadas
 3. Estructura del vídeo/post (cómo retiene)
 4. Copy: captions, titulares, CTAs
-5. Edición, ritmo y subtítulos
+5. Función del contenido (venta · comunidad · autoridad · entretenimiento · educativo)
 6. Estética del feed y consistencia de perfil
 7. Carruseles y formatos estáticos
 8. Formatos repetibles (series, secciones, plantillas)
