@@ -6,7 +6,7 @@ de ejemplo por tipología. El creativo elige una por dimensión (Fase 2) y la b�
 
 Contenido: [Cómo usar este archivo](#cómo-usar-este-archivo) · [Texto](#texto--guiones-copy-y-conceptos) · [Imagen](#imagen--fotografía-frames-storyboard-key-visual-ia) ·
 [Motion](#motion--motion-graphics-y-edición) · [Identidad](#identidad--branding) · [Maquetación](#maquetación--claude-design-figma-web-ui) ·
-[Redes](#redes--piezas-para-redes-y-paid) · [Normas del canal](#normas-del-canal)
+[Redes](#redes--piezas-para-redes-y-paid) · [Normas del canal](#normas-del-canal) · [Normas del sector](#normas-del-sector)
 
 ## Cómo usar este archivo
 
@@ -188,3 +188,21 @@ del criterio. Son las habituales: **verifica las especificaciones vigentes de ca
 | Impreso y espacio físico | CMYK o Pantone · sangrado · 300 ppp a tamaño final · tamaños mínimos legibles · prueba de color |
 | Web y producto digital | RGB · contraste accesible (WCAG AA) · adaptable a móvil · imágenes ligeras · estados de los componentes |
 | Presentaciones y documentos | Una idea por página · jerarquía clara · tamaño mínimo de texto · plantilla constante |
+
+## Normas del sector
+
+Algunos sectores tienen reglas legales de publicidad. Si el sector de la skill está regulado, la skill final lleva una sección
+«Normas del sector», aparte del criterio, **solo con lo que hayas verificado en la fuente oficial del país** del creativo. Lo que no
+puedas verificar se queda como «pendiente de revisar con un experto», nunca como afirmación. La tabla dice qué suele estar regulado
+para saber qué buscar; no es asesoramiento legal.
+
+| Sector | Qué suele estar regulado en publicidad (verifícalo) |
+|---|---|
+| Finanzas | Cómo se muestran costes y rentabilidades (TAE, comisiones), advertencias de riesgo, rentabilidades pasadas, letra pequeña legible. En España, la publicidad bancaria la supervisa el Banco de España y la de inversión, la CNMV. |
+| Salud y bienestar | Lo que se puede prometer sobre efectos en la salud, publicidad de medicamentos y productos sanitarios, uso de profesionales sanitarios. |
+| Alimentación | Declaraciones nutricionales y de propiedades saludables, publicidad dirigida a menores. |
+| Bebidas alcohólicas | Menores, mensajes de consumo responsable, asociar el alcohol con éxito, deporte o conducción. |
+| Juego y apuestas | Avisos de juego responsable, horarios, menores, uso de famosos. |
+| Inmobiliaria | Información obligatoria del inmueble (precio total, superficie, eficiencia energética). |
+| Automoción | Datos de consumo y emisiones en la pieza. |
+
